@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Hind_Siliguri} from "next/font/google";
 import "./globals.css";
+import NavBar from "@/Components/NavBar";
+import Footer from "@/Components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const hindSiliguri = Hind_Siliguri({
+  subsets: ["latin", "bengali"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,9 +20,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${hindSiliguri.className}  h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <NavBar/>
+        {children}
+        <Footer/>
+
+        </body>
     </html>
   );
 }
