@@ -17,34 +17,50 @@ interface ProductI {
   };
 }
 
-// Helper function to convert English numbers to Bengali numbers
 const engToBngNumber = (num: string | number) => {
   if (num === undefined || num === null) return "০";
   const bngNumbers: { [key: string]: string } = {
-    "0": "০", "1": "১", "2": "২", "3": "৩", "4": "৪",
-    "5": "৫", "6": "৬", "7": "৭", "8": "৮", "9": "৯",
+    "0": "০",
+    "1": "১",
+    "2": "২",
+    "3": "৩",
+    "4": "৪",
+    "5": "৫",
+    "6": "৬",
+    "7": "৭",
+    "8": "৮",
+    "9": "৯",
     ".": ".",
   };
   return String(num).replace(/[0-9]/g, (match) => bngNumbers[match] || match);
 };
 
-// Helper function to translate units to Bengali
 const translateUnit = (unit: string) => {
   if (!unit) return "";
   const unitMap: { [key: string]: string } = {
-    kg: "কেজি", gm: "গ্রাম", ltr: "লিটার", litre: "লিটার", liter: "লিটার",
-    l: "লিটার", pcs: "পিস", piece: "পিস", dozen: "ডজন", hali: "হালি",
+    kg: "কেজি",
+    gm: "গ্রাম",
+    ltr: "লিটার",
+    litre: "লিটার",
+    liter: "লিটার",
+    l: "লিটার",
+    pcs: "পিস",
+    piece: "পিস",
+    dozen: "ডজন",
+    hali: "হালি",
   };
   const normalizedUnit = unit.toLowerCase().trim();
   return unitMap[normalizedUnit] || unit;
 };
 
-export default function AllProductsClient({ products }: { products: ProductI[] }) {
-  // Check session on the client side
+export default function AllProductsClient({
+  products,
+}: {
+  products: ProductI[];
+}) {
   const { data: session } = authClient.useSession();
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    // If no user is logged in, stop navigation and show toast
     if (!session?.user) {
       e.preventDefault();
       toast.warning("বিস্তারিত দেখতে অনুগ্রহ করে সাইন ইন করুন।");
@@ -55,7 +71,6 @@ export default function AllProductsClient({ products }: { products: ProductI[] }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Header Section */}
       <div className="mb-6">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
           সব পণ্য
@@ -65,14 +80,12 @@ export default function AllProductsClient({ products }: { products: ProductI[] }
         </p>
       </div>
 
-      {/* Responsive Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {products.map((fitem, index: number) => {
           const todayBn = engToBngNumber(fitem.today);
           const pctBn = engToBngNumber(fitem.change?.pct || 0);
           const unitBn = translateUnit(fitem.unit);
 
-          // Conditionals for trend design
           const isUp = fitem.change?.dir === "up";
           const isDown = fitem.change?.dir === "down";
 
@@ -94,7 +107,7 @@ export default function AllProductsClient({ products }: { products: ProductI[] }
             <Link
               key={fitem.id || index}
               href={`/eachProduct/${fitem.id}`}
-              onClick={handleLinkClick} // <-- Protect the route here
+              onClick={handleLinkClick}
               className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow cursor-pointer block"
             >
               <div className="flex items-center gap-4 mb-6">

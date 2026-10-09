@@ -9,7 +9,7 @@ const Banner = () => {
                     
                     <div className="flex-1 space-y-4 text-center md:text-left flex flex-col items-center md:items-start">
                         
-                        {/* Replaced the static div with the client component */}
+                     
                         <CurrentDate className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs md:text-sm font-semibold w-fit min-h-[28px]" />
 
                         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
