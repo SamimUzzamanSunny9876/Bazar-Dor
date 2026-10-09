@@ -1,19 +1,16 @@
 import Image from 'next/image';
+import CurrentDate from './CurrentDate';
 
 const Banner = () => {
-    const date = new Date().toLocaleDateString("bn-BD", {
-        dateStyle: "full",
-    });
-
     return (
         <div className="w-full bg-[#f4f6f4] py-4 md:py-6">
             <div className="container mx-auto px-4">
                 <div className="bg-white rounded-2xl p-5 md:p-8 border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 shadow-sm">
                     
                     <div className="flex-1 space-y-4 text-center md:text-left flex flex-col items-center md:items-start">
-                        <div className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs md:text-sm font-semibold w-fit">
-                            {date}
-                        </div>
+                        
+                        {/* Replaced the static div with the client component */}
+                        <CurrentDate className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs md:text-sm font-semibold w-fit min-h-[28px]" />
 
                         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
                             আজকের বাজারের দাম এক নজরে

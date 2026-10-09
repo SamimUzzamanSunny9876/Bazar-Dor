@@ -5,6 +5,7 @@ import NavBar from "@/Components/NavBar";
 import Footer from "@/Components/Footer";
 import Marquee from "@/Components/Marquee";
 import { ToastContainer } from "react-toastify";
+import { Suspense } from "react";
 
 const hindSiliguri = Hind_Siliguri({
   subsets: ["latin", "bengali"],
@@ -27,7 +28,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <NavBar/>
-         <Marquee/>
+        <Suspense fallback={<div>Loading products...</div>}>
+        <Marquee />
+      </Suspense>
         {children}
         <ToastContainer position="top-center" autoClose={3000} />
         <Footer/>

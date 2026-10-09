@@ -2,11 +2,11 @@ import Image from "next/image";
 import NavLink from "./NavLink";
 import Link from "next/link";
 import UserInfo from "./UserInfo";
+import CurrentDate from "./CurrentDate"; 
+import { Suspense } from "react";
 
 const NavBar = () => {
-  const date = new Date().toLocaleDateString("bn-BD", {
-    dateStyle: "full",
-  });
+
 
   return (
     <nav className="w-full bg-gray-50/50 py-3 md:py-4 border-b border-gray-100 sticky top-0 z-50 backdrop-blur-md">
@@ -28,9 +28,10 @@ const NavBar = () => {
                 <h1 className="text-lg md:text-2xl font-bold text-gray-900 leading-tight">
                   বাজার দর
                 </h1>
-                <p className="text-[11px] md:text-sm text-gray-600 font-medium tracking-tight md:tracking-normal">
-                  {date}
-                </p>
+                
+          
+                <CurrentDate />
+                
               </div>
             </div>
           </Link>
@@ -38,7 +39,10 @@ const NavBar = () => {
           <UserInfo />
         </div>
       </div>
-      <NavLink />
+      <Suspense fallback={<div>Loading products...</div>}>
+         <NavLink />
+      </Suspense>
+    
     </nav>
   );
 };
