@@ -6,7 +6,6 @@ interface NavLinkI {
   icon: string;
   slug: string;
 }
-
 const NavLink = async () => {
   const res = await fetch(
     "https://api.api-store.workers.dev/api/bazardor/categories",
@@ -20,7 +19,7 @@ const NavLink = async () => {
           {data.map((item: NavLinkI) => {
             return (
               <Link
-                href={item.slug}
+                href={`/category/${item.id}`}
                 key={item.id}
                 className="flex items-center gap-1.5 md:gap-2 text-gray-800 font-medium md:font-semibold text-xs md:text-sm cursor-pointer hover:text-green-700 transition-colors whitespace-nowrap shrink-0"
               >

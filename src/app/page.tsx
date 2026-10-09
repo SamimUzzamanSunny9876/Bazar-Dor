@@ -1,9 +1,17 @@
+import AllProducts from "@/Components/AllProducts";
+import Banner from "@/Components/Banner";
+import PriceDecrease from "@/Components/PriceDecrease";
+import PriceIncrease from "@/Components/PriceIncrease";
 
 
 export default function Home() {
   return (
   <div>
-    <h2 className="font-bold">চাল</h2>
+    
+     <Banner/>
+     <PriceIncrease/>
+     <PriceDecrease/>
+     <AllProducts/>
      </div>
   );
 }
