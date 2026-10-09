@@ -1,6 +1,7 @@
 import Image from "next/image";
 import NavLink from "./NavLink";
 import Link from "next/link";
+import UserInfo from "./UserInfo";
 
 const NavBar = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -8,7 +9,7 @@ const NavBar = () => {
   });
 
   return (
-    <nav className="w-full bg-gray-50/50 py-3 md:py-4 border-b border-gray-100">
+    <nav className="w-full bg-gray-50/50 py-3 md:py-4 border-b border-gray-100 sticky top-0 z-50 backdrop-blur-md">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center w-full">
           <Link href={"/"}>
@@ -34,14 +35,7 @@ const NavBar = () => {
             </div>
           </Link>
 
-          <div className="flex items-center gap-4 md:gap-6">
-            <button className="text-sm md:text-base text-gray-800 font-bold hover:text-green-700 transition-colors">
-              সাইন ইন
-            </button>
-            <button className="bg-green-700 text-white text-sm md:text-base font-bold py-1.5 px-4 md:py-2.5 md:px-6 rounded-md md:rounded-lg shadow hover:bg-green-800 transition-colors">
-              সাইন আপ
-            </button>
-          </div>
+          <UserInfo />
         </div>
       </div>
       <NavLink />

@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "@/Components/NavBar";
 import Footer from "@/Components/Footer";
 import Marquee from "@/Components/Marquee";
+import { ToastContainer } from "react-toastify";
 
 const hindSiliguri = Hind_Siliguri({
   subsets: ["latin", "bengali"],
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <NavBar/>
          <Marquee/>
         {children}
+        <ToastContainer position="top-center" autoClose={3000} />
         <Footer/>
 
         </body>
