@@ -1,6 +1,8 @@
 import React from "react";
+import Link from "next/link";
 
 interface ProductI {
+  id: number; // <-- Added id so TypeScript knows it exists
   categoryIcon: string;
   nameBn: string;
   today: number;
@@ -89,9 +91,11 @@ const AllProducts = async () => {
           }
 
           return (
-            <div
-              key={index}
-              className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
+            // Replaced the div with a Link tag and added the correct href
+            <Link
+              key={fitem.id || index}
+              href={`/eachProduct/${fitem.id}`}
+              className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow cursor-pointer block"
             >
               {/* Top part: Icon, Name, and Unit */}
               <div className="flex items-center gap-4 mb-6">
@@ -130,7 +134,7 @@ const AllProducts = async () => {
                   <span>{pctBn}%</span>
                 </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

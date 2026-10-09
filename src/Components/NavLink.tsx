@@ -22,6 +22,7 @@ const NavLink = async () => {
                 href={`/category/${item.id}`}
                 key={item.id}
                 className="flex items-center gap-1.5 md:gap-2 text-gray-800 font-medium md:font-semibold text-xs md:text-sm cursor-pointer hover:text-green-700 transition-colors whitespace-nowrap shrink-0"
+               
               >
                 <span className="text-base md:text-lg">{item.icon}</span>
                 <span>{item.nameBn}</span>
